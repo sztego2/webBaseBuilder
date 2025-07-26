@@ -7,16 +7,28 @@
 <body>
     <div id="gameContainer" style="position: relative; width: 800px; height: 600px;">
         <canvas id="gameCanvas" width="800" height="600" style="border: 1px solid #000000;"></canvas>
-        <button id="newGame" style="position: absolute; top: 20px; left: 30px; z-index: 10;" onclick="newGame()">New</button>
-        <button id="saveGame" style="position: absolute; top: 20px; left: 80px; z-index: 10;" onclick="saveGame()">Save</button>
-        <button id="loadGame" style="position: absolute; top: 20px; left: 135px; z-index: 10;" onclick="loadGame()">Load</button>
+        <button id="newBtn" style="position: absolute; top: 20px; left: 30px; z-index: 10;" onclick="newGame()">New</button>
+        <button id="saveBtn" style="position: absolute; top: 20px; left: 80px; z-index: 10;" onclick="saveGame()">Save</button>
+        <button id="loadBtn" style="position: absolute; top: 20px; left: 135px; z-index: 10;" onclick="loadGame()">Load</button>
+        <label id="labelPopulation" style="position: absolute; top: 50px; left: 30px; z-index: 10;">Population</label>
+        <output id="population" style="position: absolute; top: 70px; left: 50px; z-index: 10;">10</output>
+        <label id="labelPower" style="position: absolute; top: 50px; left: 140px; z-index: 10;">Power</label>
+        <output id="power" style="position: absolute; top: 70px; left: 150px; z-index: 10;">20</output>
+        <label id="labelFood" style="position: absolute; top: 50px; left: 250px; z-index: 10;">Food</label>
+        <output id="food" style="position: absolute; top: 70px; left: 260px; z-index: 10;">30</output>
+        <label id="labelMoney" style="position: absolute; top: 50px; left: 380px; z-index: 10;">Money</label>
+        <output id="money" style="position: absolute; top: 70px; left: 400px; z-index: 10;">40</output>
 
-
-        <button id="house" style="position: absolute; top: 150px; left: 100px; z-index: 10;" onclick="selectBuilding('house')">House</button><br>
-        <button id="powerplant" style="position: absolute; top: 300px; left: 60px; z-index: 10;" onclick="selectBuilding('powerplant')">Powerplant</button><br>
-        <button id="farm" style="position: absolute; top: 500px; left: 140px; z-index: 10;" onclick="selectBuilding('farm')">Farm</button><br>
-        <button id="factory" style="position: absolute; top: 150px; left: 500px; z-index: 10;" onclick="selectBuilding('factory')">Factory</button><br>
-        <button id="barracks" style="position: absolute; top: 400px; left: 600px; z-index: 10;" onclick="selectBuilding('barracks')">Barracks</button> 
+        <button id="houseBtn" style="position: absolute; top: 150px; left: 100px; z-index: 10;" onclick="addBuilding('house')">House</button>
+        <output id="quantityHouse" style="position: absolute; top: 150px; left: 160px; z-index: 10;">2</output>
+        <button id="powerplantBtn" style="position: absolute; top: 300px; left: 60px; z-index: 10;" onclick="addBuilding('powerplant')">Powerplant</button>
+        <output id="quantityPowerplant" style="position: absolute; top: 300px; left: 150px; z-index: 10;">1</output>
+        <button id="farmBtn" style="position: absolute; top: 500px; left: 140px; z-index: 10;" onclick="addBuilding('farm')">Farm</button>
+        <output id="quantityFarm" style="position: absolute; top: 500px; left: 190px; z-index: 10;">1</output>
+        <button id="factoryBtn" style="position: absolute; top: 150px; left: 500px; z-index: 10;" onclick="addBuilding('factory')">Factory</button>
+        <output id="quantityFactory" style="position: absolute; top: 150px; left: 565px; z-index: 10;">0</output>
+        <button id="barracksBtn" style="position: absolute; top: 400px; left: 600px; z-index: 10;" onclick="addBuilding('barracks')">Barracks</button> 
+        <output id="quantityBarracks" style="position: absolute; top: 400px; left: 675px; z-index: 10;">0</output>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="ui.js"></script>
