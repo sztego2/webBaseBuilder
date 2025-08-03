@@ -1,18 +1,38 @@
 //const socket = io();
-//numbers
-let houses = 2;
-let powerplants = 1;
-let farms = 1;
+//economics
+let population = 0;
+let power = 0;
+let food = 0;
+let army = 0;
+let money = 100;
+
+
+//buildings
+let houses = 0;
+let powerplants = 0;
+let farms = 0;
 let factories = 0;
 let barracks = 0;
 
 
 //menu
 
-/* function newGame(){
-    socket.emit("newBtn", buildings);
+ function newGame(){
+    houses = powerplants = farms = factories = barracks = 0;
+    population = power = food = army = 0;
+    money = 100;
+    updateOutput("quantityHouse", houses);
+    updateOutput("quantityPowerplant", powerplants);
+    updateOutput("quantityFarm", farms);
+    updateOutput("quantityFactory", factories);
+    updateOutput("quantityBarracks", barracks);
+    updateOutput("population", population);
+    updateOutput("power", power);
+    updateOutput("food", food);
+    updateOutput("army", army);
+    updateOutput("money", money);
 }
-
+/*
 function saveGame() {
     socket.emit("saveBtn", buildings);
 }
@@ -25,25 +45,75 @@ function loadGame(){
 function addBuilding(buildingType){
     switch(buildingType){
         case "house":
-            houses++;
-            updateOutput("quantityHouse", houses);
-            break;
+            if(money >= 10){
+                houses++;
+                population += 40;
+                money -= 10;
+                updateOutput("quantityHouse", houses);
+                updateOutput("population", population);
+                updateOutput("money", money);
+                break;
+            } else {
+                break;
+            }
         case "powerplant":
-            powerplants++;
-            updateOutput("quantityPowerplant", powerplants);
-            break;
+            if(money >= 50 && population >= 20){
+                powerplants++;
+                power += 50;
+                population -= 20;
+                money -= 50;
+                updateOutput("quantityPowerplant", powerplants);
+                updateOutput("power", power);
+                updateOutput("population", population);
+                updateOutput("money", money);
+                break;
+            } else {
+                break;
+            }
         case "farm":
-            farms++;
-            updateOutput("quantityFarm", farms);
-            break;
+            if(money >= 20 && population >= 10){
+                farms++;
+                food += 20;
+                population -= 10;
+                money -= 20;
+                updateOutput("quantityFarm", farms);
+                updateOutput("food", food);
+                updateOutput("population", population);
+                updateOutput("money", money);
+                break;
+            } else {
+                break;
+            }
         case "factory":
-            factories++;
-            updateOutput("quantityFactory", factories);
-            break;
+            if(population >= 20 && power >= 20 && food >= 20){
+                factories++;
+                population -= 20;
+                power -= 20;
+                food -= 20;
+                money += 100;
+                updateOutput("quantityFactory", factories);
+                updateOutput("population", population);
+                updateOutput("power", power);
+                updateOutput("food", food);
+                updateOutput("money", money);
+                break;
+            } else {
+                break;
+            }            
         case "barracks":
-            barracks++;
-            updateOutput("quantityBarracks", barracks);
-            break;
+            if(money >= 500 && food >= 100){
+                barracks++;
+                army++;
+                food -= 100;
+                money -= 500;            
+                updateOutput("quantityBarracks", barracks);
+                updateOutput("food", food);
+                updateOutput("money", money);
+                updateOutput("army", army);
+                break;
+            } else {
+                break;
+            }
     }  
 }
 
